@@ -16,6 +16,7 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     //google login
     const googleLogin = () => {
@@ -83,7 +84,9 @@ const AuthProvider = ({ children }) => {
         user,
         loading,
         githubLogin,
-        handleUpdateProfile
+        handleUpdateProfile,
+        isDarkMode,
+        setIsDarkMode
 
 
     }

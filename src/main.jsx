@@ -14,6 +14,7 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import AddBookPage from './pages/AddBookPage/AddBookPage';
 import AllBooksPage from './pages/AllBooksPage/AllBooksPage';
 import BorrowedBooksPage from './pages/BorrowedBooksPage/BorrowedBooksPage';
+import CategoryDetails from './components/CategoryDetails/CategoryDetails';
 
 
 
@@ -25,6 +26,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage></HomePage>
+      },
+      {
+        path: "/categoryDetails/:_id",
+        element: <CategoryDetails></CategoryDetails>
+       
+        
       },
       {
         path: "/addBook",
