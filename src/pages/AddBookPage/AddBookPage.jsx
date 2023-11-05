@@ -17,7 +17,7 @@ const AddBookPage = () => {
 
         const form = event.target;
 
-        const userName = form?.UserName?.value;
+        const userName = form?.userName?.value;
         const userEmail = form?.userEmail?.value;
         const photo = form.photo.value;
         const bookName = form.bookName.value;
@@ -48,7 +48,7 @@ const AddBookPage = () => {
                     Swal.fire({
                         icon: 'success',
                         title: 'Wow...',
-                        text: 'Product add successfully',
+                        text: 'Book add successfully',
 
                     })
                 }
@@ -71,7 +71,7 @@ const AddBookPage = () => {
                                 <span className="label-text">User Name</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name='UserName' value={user?.displayName} placeholder="User Name" className="input input-bordered w-full" />
+                                <input type="text" name='userName' value={user?.displayName} placeholder="User Name" className="input input-bordered w-full" />
                             </label>
                         </div>
 

@@ -15,6 +15,7 @@ import AddBookPage from './pages/AddBookPage/AddBookPage';
 import AllBooksPage from './pages/AllBooksPage/AllBooksPage';
 import BorrowedBooksPage from './pages/BorrowedBooksPage/BorrowedBooksPage';
 import CategoryDetails from './components/CategoryDetails/CategoryDetails';
+import BookUpdate from './pages/AllBooksPage/BookUpdate';
 
 
 
@@ -39,7 +40,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/allBooks",
-        element: <AllBooksPage></AllBooksPage>
+        element: <AllBooksPage></AllBooksPage>,
+        loader: () => fetch("http://localhost:5000/books")
+      },
+      {
+        path: "/bookUpdate/:id",
+        element: <BookUpdate></BookUpdate>,
+        loader: () => fetch("http://localhost:5000/books")
       },
       {
         path: "/borrowedBooks",

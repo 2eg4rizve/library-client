@@ -41,7 +41,7 @@ const Navbar = () => {
                 isPending ? "pending" : isActive ? "text-[#362FD9] underline font-bold" : ""
             }
         >
-            Add Book
+            All Books
         </NavLink>
 
         <div className="mr-[20px]"></div>
