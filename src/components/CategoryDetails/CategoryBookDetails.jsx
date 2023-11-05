@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 
 
@@ -13,21 +15,50 @@ const CategoryBookDetails = () => {
     let id = _id;
     //console.log(id);
 
-    const books = useLoaderData();
+    // let books = useLoaderData();
 
-    const [nowBook, setNowBook] = useState();
+    // const [nowBook, setNowBook] = useState();
 
     const { user } = useContext(AuthContext);
 
 
-    useEffect(() => {
-        const rec = books?.filter(item => item._id == id)
-        setNowBook(rec[0])
-    }, [books, id])
+    // useEffect(() => {
+    //     const rec = books?.filter(item => item._id == id)
+    //     setNowBook(rec[0])
+    // }, [books, id])
+
+    // const URL = 'http://localhost:5000/books'
+
+    const { data: nowBook, isLoading, isFetching,refetch } = useQuery({
+        queryKey: ["xyz"],
+        queryFn: async () => {
+
+            const data = await fetch(`http://localhost:5000/books/${_id}`);
+         
+            return await data.json();
+        }
+       
+      
+    
+
+    })
+
+    // const { refetch } = useQuery(["xyz"]);
+
+    if (isLoading) {
+        return <p>Loading........</p>
+    }
+
+    console.log("nowBook : ", nowBook);
+
+  
+    // const rec = books?.filter(item => item._id == id)
+    //     setNowBook(rec[0])
+
 
     //console.log(nowBook);
 
-    const { photo, bookName, quantityOfTheBook, authorName, categoryName, shortDescription, rating  } = nowBook || {}
+    const { photo, bookName, quantityOfTheBook, authorName, categoryName, shortDescription, rating } = nowBook || {}
 
     const currentDate = new Date();
 
@@ -43,7 +74,9 @@ const CategoryBookDetails = () => {
     let qtob = quantityOfTheBook;
     let cn = categoryName;
 
+
     
+
 
 
 
@@ -66,6 +99,8 @@ const CategoryBookDetails = () => {
         // console.log("currentDate : ", formattedDate);
         // console.log("returnDate : ", returnDate);
 
+       
+
 
 
         const newBook = { userName, userEmail, photo, bookName, quantityOfTheBook, authorName, categoryName, rating, borrowDate, returnDate }
@@ -84,19 +119,58 @@ const CategoryBookDetails = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log("add  : ", data)
+              
                 if (data.insertedId) {
                     Swal.fire({
                         icon: 'success',
                         title: 'Thanks...',
                         text: 'Book Borrow successfully',
-                        
+
+
+
 
                     })
                 }
+                console.log("aga : ", qtob);
+                qtob = qtob - 1
+                let quantityOfTheBook = qtob;
+
+               
+                
+
+
+                console.log("akon : ", quantityOfTheBook);
+
+                const newProduct = { quantityOfTheBook }
+
+             
+
+                fetch(`http://localhost:5000/books/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newProduct)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        refetch();
+                        console.log("update product data : ", data)
+                        
+                       
+                    })
+                  
+
             })
+
+           
+           
+
 
 
     }
+
+
 
 
 
@@ -104,6 +178,8 @@ const CategoryBookDetails = () => {
         <div>
             <p>category Book Details</p>
             <p>id : {id}</p>
+
+
 
             <div className="card card-compact bg-base-100 shadow-xl mt-[50px] border-2 text-black">
                 <figure><img className="h-[300px] w-full  object-contain" src={photo} alt="Shoes" /></figure>
@@ -115,8 +191,8 @@ const CategoryBookDetails = () => {
                     <h2 className="card-title">Description : {shortDescription} </h2>
 
                     <h2 className="card-title pb-[20px]">Rating : {rating} / 5</h2>
-                    
-                    <h2 className="card-title pb-[20px]">quantityOfTheBook : {quantityOfTheBook}</h2>
+
+                    <h2 className="card-title pb-[20px]">quantityOfTheBook : {qtob}</h2>
 
                     <Link to={`/categoryBookRead/${_id}`}>
                         <button className="btn btn-primary w-full  mt-[30px] mb-[10px]">Read</button>

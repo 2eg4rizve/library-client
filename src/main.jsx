@@ -20,6 +20,10 @@ import CategoryBookRead from './components/CategoryDetails/CategoryBookRead';
 import CategoryBookDetails from './components/CategoryDetails/CategoryBookDetails';
 import CategoryBookBorrow from './components/CategoryDetails/CategoryBookBorrow';
 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
 
 const router = createBrowserRouter([
@@ -34,26 +38,26 @@ const router = createBrowserRouter([
       {
         path: "/categoryDetails/:_id",
         element: <CategoryDetails></CategoryDetails>
-       
-        
+
+
       },
       {
         path: "/categoryBookDetails/:_id",
         element: <CategoryBookDetails></CategoryBookDetails>,
-        loader: () => fetch("http://localhost:5000/books")
-             
+        // loader: () => fetch("http://localhost:5000/books")
+
       },
       {
         path: "/categoryBookRead/:_id",
         element: <CategoryBookRead></CategoryBookRead>
-       
-        
+
+
       },
       {
         path: "/categoryBookBorrow/:_id",
         element: <CategoryBookBorrow></CategoryBookBorrow>
-       
-        
+
+
       },
       {
         path: "/addBook",
@@ -87,11 +91,17 @@ const router = createBrowserRouter([
   },
 ]);
 
+
+const queryClient = new QueryClient()
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-    <RouterProvider router={router} />
-    </AuthProvider>
-    
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </QueryClientProvider>
+
+
   </React.StrictMode>,
 )
