@@ -71,7 +71,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/borrowedBooks",
-        element: <BorrowedBooksPage></BorrowedBooksPage>
+        element: <BorrowedBooksPage></BorrowedBooksPage>,
+        loader: () => fetch("http://localhost:5000/borrowBooks")
       },
       {
         path: "/login",
