@@ -27,7 +27,7 @@ const CategoryBookDetails = () => {
 
     //console.log(nowBook);
 
-    const { photo, bookName, quantityOfTheBook, authorName, categoryName, shortDescription, rating } = nowBook || {}
+    const { photo, bookName, quantityOfTheBook, authorName, categoryName, shortDescription, rating  } = nowBook || {}
 
     const currentDate = new Date();
 
@@ -115,6 +115,8 @@ const CategoryBookDetails = () => {
                     <h2 className="card-title">Description : {shortDescription} </h2>
 
                     <h2 className="card-title pb-[20px]">Rating : {rating} / 5</h2>
+                    
+                    <h2 className="card-title pb-[20px]">quantityOfTheBook : {quantityOfTheBook}</h2>
 
                     <Link to={`/categoryBookRead/${_id}`}>
                         <button className="btn btn-primary w-full  mt-[30px] mb-[10px]">Read</button>

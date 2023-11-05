@@ -17,15 +17,15 @@ const AddBookPage = () => {
 
         const form = event.target;
 
-        const userName = form?.userName?.value;
-        const userEmail = form?.userEmail?.value;
-        const photo = form.photo.value;
-        const bookName = form.bookName.value;
-        const quantityOfTheBook = form.quantityOfTheBook.value;
-        const authorName = form.authorName.value;
-        const categoryName = selectedItem;
-        const shortDescription = form.shortDescription.value;
-        const rating = form.rating.value;
+        const userName = form?.userName?.value||"";
+        const userEmail = form?.userEmail?.value||"";
+        const photo = form.photo.value||"";
+        const bookName = form.bookName.value||"";
+        const quantityOfTheBook = form.quantityOfTheBook.value||"";
+        const authorName = form.authorName.value||"";
+        const categoryName = selectedItem||"";
+        const shortDescription = form.shortDescription.value||"";
+        const rating = form.rating.value||"";
 
 
         const newBook = { userName, userEmail, photo, bookName, quantityOfTheBook,authorName,categoryName, shortDescription, rating }

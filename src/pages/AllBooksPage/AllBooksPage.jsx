@@ -20,7 +20,7 @@ const AllBooksPage = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                 {
-                    nowBooks.map(book => <BookCard key={book._id} book={book}></BookCard>)
+                    nowBooks?.map(book => <BookCard key={book._id} book={book}></BookCard>)
                 }
 
             </div>

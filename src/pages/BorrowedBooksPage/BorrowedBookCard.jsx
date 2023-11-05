@@ -2,9 +2,9 @@
 /* eslint-disable no-unused-vars */
 
 
-const BorrowedBookCard = ({ myBorrowBook ,handleDelete,setMyBorrowBooks}) => {
+const BorrowedBookCard = ({ myBorrowBook, handleDelete, setMyBorrowBooks }) => {
 
-    const {_id, userName, userEmail, photo, bookName, quantityOfTheBook, authorName, categoryName, rating, borrowDate, returnDate } = myBorrowBook || {}
+    const { _id, userName, userEmail, photo, bookName, quantityOfTheBook, authorName, categoryName, rating, borrowDate, returnDate } = myBorrowBook || {}
 
 
     return (
