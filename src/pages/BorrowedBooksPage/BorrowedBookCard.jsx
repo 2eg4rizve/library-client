@@ -2,9 +2,10 @@
 /* eslint-disable no-unused-vars */
 
 
-const BorrowedBookCard = ({myBorrowBook}) => {
+const BorrowedBookCard = ({ myBorrowBook ,handleDelete,setMyBorrowBooks}) => {
 
-    const { userName, userEmail, photo, bookName, quantityOfTheBook, authorName, categoryName, rating, borrowDate, returnDate } = myBorrowBook || {}
+    const {_id, userName, userEmail, photo, bookName, quantityOfTheBook, authorName, categoryName, rating, borrowDate, returnDate } = myBorrowBook || {}
+
 
     return (
         <div>
@@ -15,10 +16,13 @@ const BorrowedBookCard = ({myBorrowBook}) => {
                     <h2 className="card-title">Category Name : {categoryName}</h2>
                     <h2 className="card-title">Borrowed Date : {borrowDate}</h2>
                     <h2 className="card-title">Return Date : {returnDate} </h2>
-                    
-                   
-                    <button className="btn btn-primary my-[20px]">DELETE</button>
-                   
+
+
+                    <button
+                        onClick={() => handleDelete(_id)}
+                        className="btn btn-primary my-[20px]">
+                        DELETE</button>
+
 
 
                 </div>
