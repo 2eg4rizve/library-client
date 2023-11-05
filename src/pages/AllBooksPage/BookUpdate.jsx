@@ -50,7 +50,7 @@ const BookUpdate = () => {
 
         console.log(newProduct);
 
-        fetch(`http://localhost:5000/Books/${id}`, {
+        fetch(`http://localhost:5000/books/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -64,7 +64,7 @@ const BookUpdate = () => {
                     Swal.fire({
                         icon: 'success',
                         title: 'Wow...',
-                        text: 'Product Updated successfully',
+                        text: 'Book Updated successfully',
                         confirmButtonText: 'cool'
 
                     })
