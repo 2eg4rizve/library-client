@@ -17,6 +17,7 @@ import BorrowedBooksPage from './pages/BorrowedBooksPage/BorrowedBooksPage';
 import CategoryDetails from './components/CategoryDetails/CategoryDetails';
 import BookUpdate from './pages/AllBooksPage/BookUpdate';
 import CategoryBookRead from './components/CategoryDetails/CategoryBookRead';
+import CategoryBookDetails from './components/CategoryDetails/CategoryBookDetails';
 
 
 
@@ -34,6 +35,12 @@ const router = createBrowserRouter([
         element: <CategoryDetails></CategoryDetails>
        
         
+      },
+      {
+        path: "/categoryBookDetails/:_id",
+        element: <CategoryBookDetails></CategoryBookDetails>,
+        loader: () => fetch("http://localhost:5000/books")
+             
       },
       {
         path: "/categoryBookRead/:_id",

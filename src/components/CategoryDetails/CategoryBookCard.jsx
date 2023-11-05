@@ -18,13 +18,11 @@ const CategoryBookCard = ({ book }) => {
                     <h2 className="card-title">Rating : {rating}</h2>
 
 
-                    <Link to={`/categoryBookRead/${_id}`}>
-                        <button className="btn btn-primary w-full  mt-[30px]">Read</button>
+                    <Link to={`/categoryBookDetails/${_id}`}>
+                        <button className="btn btn-primary w-full  mt-[30px]">Details</button>
                     </Link>
 
-                    <Link to={`/bookBorrow/${_id}`}>
-                        <button className="btn btn-primary w-full  mt-[30px]">Update</button>
-                    </Link>
+                   
 
                 </div>
             </div>

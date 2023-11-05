@@ -17,7 +17,7 @@ const Categories = () => {
             })
 
     }, [])
-    console.log(categories);
+    //console.log(categories);
 
     if (isLoading) {
         return <p>Loading............</p>

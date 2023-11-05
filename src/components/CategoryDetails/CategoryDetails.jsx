@@ -48,7 +48,7 @@ const CategoryDetails = () => {
         return <p>Loading.................</p>
     }
 
-    console.log(myCategory);
+    //console.log(myCategory);
 
     return (
         <div>
