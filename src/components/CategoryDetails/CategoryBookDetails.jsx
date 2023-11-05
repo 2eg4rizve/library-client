@@ -4,7 +4,11 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
 
+
 const CategoryBookDetails = () => {
+
+
+
     const { _id } = useParams();
     let id = _id;
     //console.log(id);
@@ -36,9 +40,10 @@ const CategoryBookDetails = () => {
     // console.log(formattedDate)
 
 
-    let qtob =  quantityOfTheBook ;
-    let cn = categoryName ;
+    let qtob = quantityOfTheBook;
+    let cn = categoryName;
 
+    
 
 
 
@@ -78,12 +83,13 @@ const CategoryBookDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log("add  : ", data)
+                // console.log("add  : ", data)
                 if (data.insertedId) {
                     Swal.fire({
                         icon: 'success',
                         title: 'Thanks...',
                         text: 'Book Borrow successfully',
+                        
 
                     })
                 }
