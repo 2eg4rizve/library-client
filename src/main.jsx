@@ -16,6 +16,7 @@ import AllBooksPage from './pages/AllBooksPage/AllBooksPage';
 import BorrowedBooksPage from './pages/BorrowedBooksPage/BorrowedBooksPage';
 import CategoryDetails from './components/CategoryDetails/CategoryDetails';
 import BookUpdate from './pages/AllBooksPage/BookUpdate';
+import CategoryBookRead from './components/CategoryDetails/CategoryBookRead';
 
 
 
@@ -31,6 +32,12 @@ const router = createBrowserRouter([
       {
         path: "/categoryDetails/:_id",
         element: <CategoryDetails></CategoryDetails>
+       
+        
+      },
+      {
+        path: "/categoryBookRead/:_id",
+        element: <CategoryBookRead></CategoryBookRead>
        
         
       },
