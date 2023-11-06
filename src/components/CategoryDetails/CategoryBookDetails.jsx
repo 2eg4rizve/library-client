@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
@@ -21,6 +22,8 @@ const CategoryBookDetails = () => {
 
     const { user } = useContext(AuthContext);
 
+    const [again,setAgain] = useState(false);
+
 
     // useEffect(() => {
     //     const rec = books?.filter(item => item._id == id)
@@ -29,19 +32,40 @@ const CategoryBookDetails = () => {
 
     // const URL = 'http://localhost:5000/books'
 
-    const { data: nowBook, isLoading, isFetching,refetch } = useQuery({
+    const { data, isLoading, isFetching, refetch } = useQuery({
         queryKey: ["xyz"],
         queryFn: async () => {
 
-            const data = await fetch(`http://localhost:5000/books/${_id}`);
-         
-            return await data.json();
+            const firstResponse  = await fetch(`http://localhost:5000/books/${_id}`);
+            const nowBook = await firstResponse.json();
+
+            const secondResponse = await fetch('http://localhost:5000/borrowBooks');
+            const myBooks = await secondResponse.json();
+
+            return {nowBook,  myBooks };
         }
-       
-      
-    
+
+
+
 
     })
+    const { nowBook, myBooks } = data||{};
+
+    // const { data: myBooks } = useQuery({
+    //     queryKey: ["myBorrowBooks"],
+    //     queryFn: async () => {
+
+    //         const data = await fetch('http://localhost:5000/borrowBooks');
+
+    //         return await data.json();
+    //     }
+
+
+
+
+    // })
+
+
 
     // const { refetch } = useQuery(["xyz"]);
 
@@ -49,9 +73,10 @@ const CategoryBookDetails = () => {
         return <p>Loading........</p>
     }
 
-    console.log("nowBook : ", nowBook);
+    //console.log("nowBook : ", nowBook);
+    // console.log("myBorrowBooks : ", myBooks);
 
-  
+
     // const rec = books?.filter(item => item._id == id)
     //     setNowBook(rec[0])
 
@@ -75,13 +100,15 @@ const CategoryBookDetails = () => {
     let cn = categoryName;
 
 
-    
+
 
 
 
 
     const handleAdd = event => {
         event.preventDefault();
+
+        setAgain(!again);
 
         const form = event.target;
 
@@ -100,74 +127,86 @@ const CategoryBookDetails = () => {
         // console.log("currentDate : ", formattedDate);
         // console.log("returnDate : ", returnDate);
 
-       
+        const findBook = myBooks.find(item => item.userEmail == userEmail && item.bookId == bookId)
+
+        console.log(findBook);
+
+
+        if (!findBook) {
+            const newBook = { userName, userEmail, photo, bookName, quantityOfTheBook, authorName, categoryName, bookId, rating, borrowDate, returnDate }
+
+            console.log("Borrow book details : ", newBook);
+
+            console.log("bookId : ", bookId)
+
+            setAgain(!again);
 
 
 
-        const newBook = { userName, userEmail, photo, bookName, quantityOfTheBook, authorName, categoryName,bookId, rating, borrowDate, returnDate }
-
-        console.log("Borrow book details : ",newBook);
-
-        console.log("bookId : ",bookId)
-
-
-
-        fetch('http://localhost:5000/borrowBooks', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newBook)
-        })
-            .then(res => res.json())
-            .then(data => {
-                // console.log("add  : ", data)
-              
-                if (data.insertedId) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Thanks...',
-                        text: 'Book Borrow successfully',
-
-
-
-
-                    })
-                }
-                console.log("aga : ", qtob);
-                qtob = qtob - 1
-                let quantityOfTheBook = qtob;
-
-               
-                
-
-
-                console.log("akon : ", quantityOfTheBook);
-
-                const newProduct = { quantityOfTheBook }
-
-             
-
-                fetch(`http://localhost:5000/books/${id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(newProduct)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        refetch();
-                        //console.log("update product data : ", data)
-                        
-                       
-                    })
-                  
-
+            fetch('http://localhost:5000/borrowBooks', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(newBook)
             })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log("add  : ", data)
 
-           
-           
+                    if (data.insertedId) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thanks...',
+                            text: 'Book Borrow successfully',
+
+
+
+
+                        })
+                    }
+                    console.log("aga : ", qtob);
+                    qtob = qtob - 1
+                    let quantityOfTheBook = qtob;
+
+
+
+
+
+                    console.log("akon : ", quantityOfTheBook);
+
+                    const newProduct = { quantityOfTheBook }
+
+
+
+                    fetch(`http://localhost:5000/books/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(newProduct)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            refetch();
+                            //console.log("update product data : ", data)
+
+
+                        })
+
+
+                })
+
+        }
+        else
+        {
+            console.log("sorry all ready added")
+        }
+
+
+
+
+
 
 
 
@@ -281,8 +320,8 @@ const CategoryBookDetails = () => {
                                     </label>
                                 </div>
 
-                                 {/*Book Id */}
-                                 <div className="form-control w-full mb-4">
+                                {/*Book Id */}
+                                <div className="form-control w-full mb-4">
                                     <label className="label">
                                         <span className="label-text">Book ID</span>
                                     </label>
