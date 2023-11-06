@@ -4,7 +4,9 @@
 
 const BorrowedBookCard = ({ myBorrowBook, handleDelete, setMyBorrowBooks }) => {
 
-    const { _id, userName, userEmail, photo, bookName, quantityOfTheBook, authorName, categoryName, rating, borrowDate, returnDate } = myBorrowBook || {}
+    const { _id, userName, userEmail, photo, bookName, quantityOfTheBook, authorName, categoryName, bookId, rating, borrowDate, returnDate } = myBorrowBook || {}
+
+    let qtob = quantityOfTheBook;
 
 
     return (
@@ -16,12 +18,16 @@ const BorrowedBookCard = ({ myBorrowBook, handleDelete, setMyBorrowBooks }) => {
                     <h2 className="card-title">Category Name : {categoryName}</h2>
                     <h2 className="card-title">Borrowed Date : {borrowDate}</h2>
                     <h2 className="card-title">Return Date : {returnDate} </h2>
+                    <h2 className="card-title">Book Id : {bookId} </h2>
+                    <h2 className="card-title">quantityOfTheBook : {quantityOfTheBook} </h2>
 
 
                     <button
-                        onClick={() => handleDelete(_id)}
-                        className="btn btn-primary my-[20px]">
-                        DELETE</button>
+                        onClick={() => handleDelete(_id,bookId)}
+                        className="btn btn-primary my-[20px]"
+                        >
+                        DELETE
+                    </button>
 
 
 

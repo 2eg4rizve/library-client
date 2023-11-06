@@ -92,6 +92,7 @@ const CategoryBookDetails = () => {
         const quantityOfTheBook = qtob;
         const authorName = form.authorName.value;
         const categoryName = cn;
+        const bookId = form.bookId.value;
         const rating = form.rating.value;
         const borrowDate = formattedDate;
         const returnDate = form.returnDate.value;
@@ -103,9 +104,11 @@ const CategoryBookDetails = () => {
 
 
 
-        const newBook = { userName, userEmail, photo, bookName, quantityOfTheBook, authorName, categoryName, rating, borrowDate, returnDate }
+        const newBook = { userName, userEmail, photo, bookName, quantityOfTheBook, authorName, categoryName,bookId, rating, borrowDate, returnDate }
 
-        console.log(newBook);
+        console.log("Borrow book details : ",newBook);
+
+        console.log("bookId : ",bookId)
 
 
 
@@ -155,7 +158,7 @@ const CategoryBookDetails = () => {
                     .then(res => res.json())
                     .then(data => {
                         refetch();
-                        console.log("update product data : ", data)
+                        //console.log("update product data : ", data)
                         
                        
                     })
@@ -275,6 +278,16 @@ const CategoryBookDetails = () => {
                                     </label>
                                     <label className="input-group">
                                         <input type="text" name='categoryName' value={categoryName} placeholder="Category Name" className="input input-bordered w-full" required />
+                                    </label>
+                                </div>
+
+                                 {/*Book Id */}
+                                 <div className="form-control w-full mb-4">
+                                    <label className="label">
+                                        <span className="label-text">Book ID</span>
+                                    </label>
+                                    <label className="input-group">
+                                        <input type="text" name='bookId' value={id} placeholder="Category Name" className="input input-bordered w-full" required />
                                     </label>
                                 </div>
 
