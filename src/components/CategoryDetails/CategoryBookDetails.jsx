@@ -200,7 +200,16 @@ const CategoryBookDetails = () => {
         }
         else
         {
-            console.log("sorry all ready added")
+            // console.log("sorry all ready added")
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Book Already Borrowed',
+
+
+
+
+            })
         }
 
 
