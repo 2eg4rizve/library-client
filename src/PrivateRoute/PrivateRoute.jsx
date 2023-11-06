@@ -6,7 +6,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 
 
-const PivateRoute = ({children}) => {
+const PrivateRoute = ({children}) => {
     
     const {user,loading} =useContext(AuthContext);
 
@@ -29,4 +29,4 @@ const PivateRoute = ({children}) => {
     return children
 };
 
-export default PivateRoute;
+export default PrivateRoute;

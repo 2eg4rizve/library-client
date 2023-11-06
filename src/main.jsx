@@ -24,6 +24,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -43,39 +44,39 @@ const router = createBrowserRouter([
       },
       {
         path: "/categoryBookDetails/:_id",
-        element: <CategoryBookDetails></CategoryBookDetails>,
+        element: <PrivateRoute><CategoryBookDetails></CategoryBookDetails>,</PrivateRoute>
         // loader: () => fetch("http://localhost:5000/books")
 
       },
       {
         path: "/categoryBookRead/:_id",
-        element: <CategoryBookRead></CategoryBookRead>
+        element: <PrivateRoute><CategoryBookRead></CategoryBookRead></PrivateRoute>
 
 
       },
       {
         path: "/categoryBookBorrow/:_id",
-        element: <CategoryBookBorrow></CategoryBookBorrow>
+        element: <PrivateRoute><CategoryBookBorrow></CategoryBookBorrow></PrivateRoute>
 
 
       },
       {
         path: "/addBook",
-        element: <AddBookPage></AddBookPage>
+        element: <PrivateRoute><AddBookPage></AddBookPage></PrivateRoute>
       },
       {
         path: "/allBooks",
-        element: <AllBooksPage></AllBooksPage>,
+        element: <PrivateRoute><AllBooksPage></AllBooksPage></PrivateRoute>,
         loader: () => fetch("http://localhost:5000/books")
       },
       {
         path: "/bookUpdate/:id",
-        element: <BookUpdate></BookUpdate>,
+        element:<PrivateRoute><BookUpdate></BookUpdate>,</PrivateRoute>,
         loader: () => fetch("http://localhost:5000/books")
       },
       {
         path: "/borrowedBooks",
-        element: <BorrowedBooksPage></BorrowedBooksPage>,
+        element: <PrivateRoute><BorrowedBooksPage></BorrowedBooksPage></PrivateRoute>,
         loader: () => fetch("http://localhost:5000/borrowBooks")
       },
       {
