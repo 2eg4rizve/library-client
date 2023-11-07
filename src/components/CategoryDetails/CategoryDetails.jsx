@@ -52,10 +52,10 @@ const CategoryDetails = () => {
 
     return (
         <div>
-            <p>id: {_id}</p>
+            {/* <p>id: {_id}</p> */}
             <p className="text-4xl font-bold text-center my-[50px]">{categoryName} Books</p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 text-black">
                 {
                     myCategory.map(book => <CategoryBookCard key={book._id} book={book}></CategoryBookCard>)
 

@@ -46,27 +46,27 @@ const RegisterPage = () => {
             })
             return;
         }
-        // else if (!/[A-Z]/.test(password)) {
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'Oops...',
-        //         text: 'Password Should have at least one capital letter.',
+        else if (!/[A-Z]/.test(password)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password Should have at least one capital letter.',
 
-        //     })
+            })
 
-        //     return;
-        // }
-        // else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\|]/.test(password)) {
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'Oops...',
-        //         text: 'Password Should have at least one special character.',
+            return;
+        }
+        else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\|]/.test(password)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password Should have at least one special character.',
 
-        //     })
+            })
 
-        //     return;
+            return;
 
-        // }
+        }
 
         //creating a new user
 

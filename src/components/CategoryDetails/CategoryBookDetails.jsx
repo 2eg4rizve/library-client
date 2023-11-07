@@ -5,6 +5,8 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Rating from 'react-rating-stars-component';
 const starStyles = {
@@ -15,7 +17,11 @@ const starStyles = {
 
 const CategoryBookDetails = () => {
 
-
+    const showToast = () => {
+        toast.success('This is a success notification!', {
+            position: 'top-right',
+        });
+    };
 
     const { _id } = useParams();
     let id = _id;
@@ -27,7 +33,7 @@ const CategoryBookDetails = () => {
 
     const { user } = useContext(AuthContext);
 
-    const [again,setAgain] = useState(false);
+    const [again, setAgain] = useState(false);
 
 
     // useEffect(() => {
@@ -41,20 +47,20 @@ const CategoryBookDetails = () => {
         queryKey: ["xyz"],
         queryFn: async () => {
 
-            const firstResponse  = await fetch(`http://localhost:5000/books/${_id}`);
+            const firstResponse = await fetch(`http://localhost:5000/books/${_id}`);
             const nowBook = await firstResponse.json();
 
             const secondResponse = await fetch('http://localhost:5000/borrowBooks');
             const myBooks = await secondResponse.json();
 
-            return {nowBook,  myBooks };
+            return { nowBook, myBooks };
         }
 
 
 
 
     })
-    const { nowBook, myBooks } = data||{};
+    const { nowBook, myBooks } = data || {};
 
     // const { data: myBooks } = useQuery({
     //     queryKey: ["myBorrowBooks"],
@@ -161,6 +167,8 @@ const CategoryBookDetails = () => {
 
                     if (data.insertedId) {
                         Swal.fire({
+                            position: 'top-right',
+                            zIndex: 10000,
                             icon: 'success',
                             title: 'Thanks...',
                             text: 'Book Borrow successfully',
@@ -169,6 +177,7 @@ const CategoryBookDetails = () => {
 
 
                         })
+
                     }
                     console.log("aga : ", qtob);
                     qtob = qtob - 1
@@ -203,10 +212,11 @@ const CategoryBookDetails = () => {
                 })
 
         }
-        else
-        {
-            // console.log("sorry all ready added")
+        else {
+            console.log("sorry all ready added")
             Swal.fire({
+                position: 'top-right',
+                zIndex: 10000,
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Book Already Borrowed',
@@ -215,6 +225,7 @@ const CategoryBookDetails = () => {
 
 
             })
+
         }
 
 
@@ -251,19 +262,19 @@ const CategoryBookDetails = () => {
                     <div className='flex  '>
                         <h2 className="card-title pb-[20px] ">Rating : </h2>
                         <div className='mt-[5px] ml-[5px]'>
-                        <Rating
-                            
-                            value={rating}
-                            count={5} // Only one star
-                            size={24} // Size of the star
-                            edit={false} // Disable user interaction
-                            isHalf={true} // Enable half-star display
-                            emptyIcon={<span style={starStyles}>&#9733;</span>}
-                            halfIcon={<span style={starStyles}>&#9733;</span>}
-                            fullIcon={<span style={starStyles}>&#9733;</span>}
-                        />
+                            <Rating
+
+                                value={rating}
+                                count={5} // Only one star
+                                size={24} // Size of the star
+                                edit={false} // Disable user interaction
+                                isHalf={true} // Enable half-star display
+                                emptyIcon={<span style={starStyles}>&#9733;</span>}
+                                halfIcon={<span style={starStyles}>&#9733;</span>}
+                                fullIcon={<span style={starStyles}>&#9733;</span>}
+                            />
                         </div>
-                      
+
 
                     </div>
 
@@ -280,7 +291,7 @@ const CategoryBookDetails = () => {
 
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
                     <button className="btn btn-primary" onClick={() => document.getElementById('my_modal_5').showModal()}>Borrow</button>
-                    <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                    <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle z-10">
                         <div className="modal-box">
 
                             <h3 className="font-bold text-lg">Hello!</h3>

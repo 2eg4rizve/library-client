@@ -26,7 +26,7 @@ const BorrowedBookCard = ({ myBorrowBook, handleDelete, setMyBorrowBooks }) => {
                         onClick={() => handleDelete(_id,bookId)}
                         className="btn btn-primary my-[20px]"
                         >
-                        DELETE
+                        Return Book
                     </button>
 
 
