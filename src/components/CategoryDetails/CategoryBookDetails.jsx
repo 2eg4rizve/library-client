@@ -232,8 +232,8 @@ const CategoryBookDetails = () => {
 
     return (
         <div>
-            <p>category Book Details</p>
-            <p>id : {id}</p>
+            {/* <p>category Book Details</p>
+            <p>id : {id}</p> */}
 
 
 
@@ -267,7 +267,7 @@ const CategoryBookDetails = () => {
 
                     </div>
 
-                    <h2 className="card-title pb-[20px]">quantityOfTheBook : {qtob}</h2>
+                    {/* <h2 className="card-title pb-[20px]">quantityOfTheBook : {qtob}</h2> */}
 
                     <Link to={`/categoryBookRead/${_id}`}>
                         <button className="btn btn-primary w-full  mt-[30px] mb-[10px]">Read</button>

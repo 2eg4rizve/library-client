@@ -18,8 +18,8 @@ const BorrowedBookCard = ({ myBorrowBook, handleDelete, setMyBorrowBooks }) => {
                     <h2 className="card-title">Category Name : {categoryName}</h2>
                     <h2 className="card-title">Borrowed Date : {borrowDate}</h2>
                     <h2 className="card-title">Return Date : {returnDate} </h2>
-                    <h2 className="card-title">Book Id : {bookId} </h2>
-                    <h2 className="card-title">quantityOfTheBook : {quantityOfTheBook} </h2>
+                    {/* <h2 className="card-title">Book Id : {bookId} </h2>
+                    <h2 className="card-title">quantityOfTheBook : {quantityOfTheBook} </h2> */}
 
 
                     <button
