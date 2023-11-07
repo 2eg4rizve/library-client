@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       {
         path: "/categoryBookDetails/:_id",
         element: <PrivateRoute><CategoryBookDetails></CategoryBookDetails>,</PrivateRoute>
-        // loader: () => fetch("http://localhost:5000/books")
+        // loader: () => fetch("https://a11-kappa.vercel.app/books")
 
       },
       {
@@ -70,17 +70,17 @@ const router = createBrowserRouter([
       {
         path: "/allBooks",
         element: <PrivateRoute><AllBooksPage></AllBooksPage></PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/books")
+        loader: () => fetch("https://a11-kappa.vercel.app/books")
       },
       {
         path: "/bookUpdate/:id",
         element:<PrivateRoute><BookUpdate></BookUpdate>,</PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/books")
+        loader: () => fetch("https://a11-kappa.vercel.app/books")
       },
       {
         path: "/borrowedBooks",
         element: <PrivateRoute><BorrowedBooksPage></BorrowedBooksPage></PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/borrowBooks")
+        loader: () => fetch("https://a11-kappa.vercel.app/borrowBooks")
       },
       {
         path: "/login",
@@ -123,3 +123,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
   </React.StrictMode>,
 )
+
+//https://a11-kappa.vercel.app
+
+//  https://library-cb6f7.web.app
+

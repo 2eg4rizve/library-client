@@ -50,7 +50,7 @@ const BookUpdate = () => {
 
         console.log(newProduct);
 
-        fetch(`http://localhost:5000/books/${id}`, {
+        fetch(`https://a11-kappa.vercel.app/books/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

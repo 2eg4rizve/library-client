@@ -22,7 +22,7 @@ const BorrowedBooksPage = () => {
         queryKey: ["deleteBook"],
         queryFn: async () => {
 
-            const data = await fetch('http://localhost:5000/books');
+            const data = await fetch('https://a11-kappa.vercel.app/books');
          
             return await data.json();
         }
@@ -62,7 +62,7 @@ const BorrowedBooksPage = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/borrowBooks/${_id}`, {
+                fetch(`https://a11-kappa.vercel.app/borrowBooks/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -79,7 +79,7 @@ const BorrowedBooksPage = () => {
 
                            
 
-                            fetch(`http://localhost:5000/books/${bookId}`, {
+                            fetch(`https://a11-kappa.vercel.app/books/${bookId}`, {
                                 method: 'PUT',
                                 headers: {
                                     'content-type': 'application/json'

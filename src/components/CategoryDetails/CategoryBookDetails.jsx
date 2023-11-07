@@ -41,16 +41,16 @@ const CategoryBookDetails = () => {
     //     setNowBook(rec[0])
     // }, [books, id])
 
-    // const URL = 'http://localhost:5000/books'
+    // const URL = 'https://a11-kappa.vercel.app/books'
 
     const { data, isLoading, isFetching, refetch } = useQuery({
         queryKey: ["xyz"],
         queryFn: async () => {
 
-            const firstResponse = await fetch(`http://localhost:5000/books/${_id}`);
+            const firstResponse = await fetch(`https://a11-kappa.vercel.app/books/${_id}`);
             const nowBook = await firstResponse.json();
 
-            const secondResponse = await fetch('http://localhost:5000/borrowBooks');
+            const secondResponse = await fetch('https://a11-kappa.vercel.app/borrowBooks');
             const myBooks = await secondResponse.json();
 
             return { nowBook, myBooks };
@@ -66,7 +66,7 @@ const CategoryBookDetails = () => {
     //     queryKey: ["myBorrowBooks"],
     //     queryFn: async () => {
 
-    //         const data = await fetch('http://localhost:5000/borrowBooks');
+    //         const data = await fetch('https://a11-kappa.vercel.app/borrowBooks');
 
     //         return await data.json();
     //     }
@@ -154,7 +154,7 @@ const CategoryBookDetails = () => {
 
 
 
-            fetch('http://localhost:5000/borrowBooks', {
+            fetch('https://a11-kappa.vercel.app/borrowBooks', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -193,7 +193,7 @@ const CategoryBookDetails = () => {
 
 
 
-                    fetch(`http://localhost:5000/books/${id}`, {
+                    fetch(`https://a11-kappa.vercel.app/books/${id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'

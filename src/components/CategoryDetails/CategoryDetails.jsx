@@ -32,7 +32,7 @@ const CategoryDetails = () => {
     const [myCategory, setMyCategory] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
-    const url = `http://localhost:5000/booksByCategory?categoryName=${categoryName}`
+    const url = `https://a11-kappa.vercel.app/booksByCategory?categoryName=${categoryName}`
 
     useEffect(() => {
         axios.get(url)

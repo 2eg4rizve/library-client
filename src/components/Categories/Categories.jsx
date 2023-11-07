@@ -8,7 +8,7 @@ const Categories = () => {
     const [categories, setCategories] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        axios.get('http://localhost:5000/categories')
+        axios.get('https://a11-kappa.vercel.app/categories')
             .then(data => {
                 console.log(data.data)
                 setCategories(data.data);
