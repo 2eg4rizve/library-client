@@ -127,7 +127,7 @@ const BorrowedBooksPage = () => {
 
     return (
         <div>
-            <p>BorrowedBooksPage  : {myBorrowBooks.length}</p>
+            <p>Borrowed Books  : {myBorrowBooks.length}</p>
 
             {
                 myBorrowBooks.map(myBorrowBook => <BorrowedBookCard key={myBorrowBook._id} myBorrowBook={myBorrowBook} setMyBorrowBooks={setMyBorrowBooks} handleDelete={handleDelete}></BorrowedBookCard>)

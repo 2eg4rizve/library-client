@@ -25,6 +25,9 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import About from './pages/About/About';
+import Speciality from './pages/Speciality/Speciality';
+import ContactUs from './pages/ContactUs/ContactUs';
 
 
 const router = createBrowserRouter([
@@ -86,6 +89,20 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage></RegisterPage>
+      },
+      {
+        path: "/about",
+        element: <About></About>
+      },
+      {
+        path: "/speciality",
+        element: <Speciality></Speciality>
+
+      },
+      {
+        path: "/contactUs",
+        element: <ContactUs></ContactUs>
+
       }
 
     ]

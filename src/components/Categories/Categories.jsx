@@ -26,7 +26,7 @@ const Categories = () => {
     return (
         <div>
 
-            categoryBooks : {categories.length};
+            {/* categoryBooks : {categories.length}; */}
 
             <p className="text-5xl font-bold text-center my-[40px] py-[40px]">Book Category</p>
 

@@ -6,7 +6,12 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 
-
+import Rating from 'react-rating-stars-component';
+const starStyles = {
+    color: 'transparent',
+    WebkitBackgroundClip: 'text',
+    background: `linear-gradient(90deg, #FFD700 ${3.8 * 20}%, #fff 0%)`,
+};
 
 const CategoryBookDetails = () => {
 
@@ -241,7 +246,26 @@ const CategoryBookDetails = () => {
                     <h2 className="card-title">Category Name : {categoryName}</h2>
                     <h2 className="card-title">Description : {shortDescription} </h2>
 
-                    <h2 className="card-title pb-[20px]">Rating : {rating} / 5</h2>
+                    {/* <h2 className="card-title pb-[20px]">Rating : {rating} / 5</h2> */}
+
+                    <div className='flex  '>
+                        <h2 className="card-title pb-[20px] ">Rating : </h2>
+                        <div className='mt-[5px] ml-[5px]'>
+                        <Rating
+                            
+                            value={rating}
+                            count={5} // Only one star
+                            size={24} // Size of the star
+                            edit={false} // Disable user interaction
+                            isHalf={true} // Enable half-star display
+                            emptyIcon={<span style={starStyles}>&#9733;</span>}
+                            halfIcon={<span style={starStyles}>&#9733;</span>}
+                            fullIcon={<span style={starStyles}>&#9733;</span>}
+                        />
+                        </div>
+                      
+
+                    </div>
 
                     <h2 className="card-title pb-[20px]">quantityOfTheBook : {qtob}</h2>
 

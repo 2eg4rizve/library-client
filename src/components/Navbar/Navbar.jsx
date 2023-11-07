@@ -11,6 +11,14 @@ const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
 
+    const { isDarkMode, setIsDarkMode } = useContext(AuthContext);
+
+    const toggleTheme = () => {
+        setIsDarkMode(!isDarkMode);
+        // You can save the theme preference to local storage if needed.
+    };
+
+
     const navLink = <>
 
         <NavLink
@@ -57,6 +65,38 @@ const Navbar = () => {
 
         <div className="mr-[20px]"></div>
 
+        <NavLink
+            to="/about"
+            className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-[#362FD9] underline font-bold" : ""
+            }
+        >
+            About
+        </NavLink>
+
+        <div className="mr-[20px]"></div>
+
+        <NavLink
+            to="/speciality"
+            className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-[#362FD9] underline font-bold" : ""
+            }
+        >
+            Speciality
+        </NavLink>
+
+        <div className="mr-[20px]"></div>
+
+        <NavLink
+            to="/contactUs"
+            className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-[#362FD9] underline font-bold" : ""
+            }
+        >
+            Contact Us
+
+        </NavLink>
+
 
 
 
@@ -69,9 +109,9 @@ const Navbar = () => {
 
 
     return (
-        <div className="mb-[50px] sticky top-0 z-50">
+        <div className="mb-[50px] sticky top-0 z-50" style={{ background: isDarkMode ? "#45474B" : "white" }}>
 
-            <div className="navbar bg-base-100 ">
+            <div className="navbar bg-base-100 " style={{ background: isDarkMode ? "#45474B" : "white", color: isDarkMode ? "white" : "black" }}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -149,6 +189,20 @@ const Navbar = () => {
                 </div>
 
 
+            </div>
+
+            <div className="flex justify-end">
+                <p>Light Mode</p>
+                <label className="toggle-switch mx-[5px]">
+                    <input
+                        type="checkbox"
+                        className="toggle"
+                        onChange={toggleTheme}
+
+                    />
+                    <span className="slider round"></span>
+                </label>
+                <p>Dark Mode</p>
             </div>
 
         </div>
